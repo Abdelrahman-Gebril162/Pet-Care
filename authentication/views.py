@@ -5,6 +5,8 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from .models import User
 from .serializers import LoginSerializer, LogoutSerializer, UserSerializers
 
+@authentication_classes([])
+@permission_classes([])
 # Create your views here.
 @api_view(['GET','POST'])
 def Registration(request):  
@@ -52,7 +54,8 @@ def Mentainanace(request,pk):
     else:
         return Bad_Response(data=None,From='ALL Mentainance User')
 
-
+@authentication_classes([])
+@permission_classes([])
 def Login(request):
         serializers = LoginSerializer(data=request.data)
         if serializers.is_valid():

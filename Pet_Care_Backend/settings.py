@@ -52,7 +52,15 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = "authentication.User"
 
 REST_FRAMEWORK = {
-    #add the permission and authentication here
+    'NON_FIELD_ERRORS_KEY': 'error',
+    # Here all Global Settings for authentication and permissions
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'authentication.jwt.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
 
 MIDDLEWARE = [
